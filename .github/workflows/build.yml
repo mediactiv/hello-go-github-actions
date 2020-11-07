@@ -1,19 +1,18 @@
 # build go application
 name: Golang CI
-on: [push]
+on: push
 jobs:
-  build:
-
+  go-build:
+    name: build go code
     runs-on: ubuntu-latest
-    
-  steps:
-    # checkout
-    - name: Checkout code 
-      uses: actions/checkout@v2
-    # go
-    - name: Setup go
-      uses: actions/setup-go@v2.1.3
-    - run: go build
-    - run: go test
-      env:
-      CI: true
+    steps:
+      # checkout
+      - name: Checkout code 
+        uses: actions/checkout@v2
+      # go
+      - name: Setup go
+        uses: actions/setup-go@v2.1.3
+      - run: go build
+      - run: go test
+        env:
+          CI: true
