@@ -1,0 +1,13 @@
+# build go application
+name: Golang CI
+on: [push]
+jobs:
+	build:
+		runs-on: windows-latest
+	steps:
+		- uses: actions/checkout@master
+		- uses: actions/setup-go@v1
+		- run: go build
+		- run: go test
+		  env:
+			CI: true
